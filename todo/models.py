@@ -11,3 +11,8 @@ class Todo(models.Model):
         on_delete=models.CASCADE
     )
     
+    def time_passed(self):
+        now = datetime.now().date()  # Extracting date portion of current datetime
+        created_date = self.created_at.date()  # Extracting date portion of created_at
+        delta = now - created_date # Calculate the difference
+        return delta.days
